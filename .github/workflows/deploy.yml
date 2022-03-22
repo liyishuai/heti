@@ -29,12 +29,11 @@ jobs:
                 with:
                     token: ${{ secrets.NPM_TOKEN }}
             -   name: Deploy to gh-pages
-                if: needs.check-env.outputs.check-access == 'true'
                 uses: JamesIves/github-pages-deploy-action@releases/v3
                 with:
-                    ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                     BRANCH: gh-pages
-                    FOLDER: _site
+                    FOLDER: umd
     check-env:
         runs-on: ubuntu-latest
         outputs:
